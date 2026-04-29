@@ -382,9 +382,9 @@ def load_model():
 # ─────────────────────────────────────────
 def tensor_to_pil(t):
     img = torch.clamp((t + 1) / 2, 0, 1)
-    arr = (img[0].permute(1, 2, 0).cpu().numpy() * 255).astype(np.uint8)
-    return Image.fromarray(arr)
-
+    arr = (img[0].permute(1, 2, 0).cpu().detach().numpy() * 255).astype(np.uint8)
+    arr = np.clip(arr, 0, 255)
+    return Image.fromarray(arr, mode='RGB')
 
 @torch.no_grad()
 def generate(model, device, num_steps_to_show=8, seed=None):
