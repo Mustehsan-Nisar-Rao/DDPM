@@ -286,7 +286,7 @@ alphas_cumprod_prev = F.pad(alphas_cumprod[:-1], (1, 0), value=1.0)
 # ─────────────────────────────────────────
 # LOAD MODEL
 # ─────────────────────────────────────────
-MODEL_URL  = "https://github.com/Mustehsan-Nisar-Rao/DDPM/releases/download/v1/best_model.pt"
+MODEL_URL = "https://github.com/Mustehsan-Nisar-Rao/DDPM/releases/download/v1/best_model.pt"
 MODEL_PATH = "best_model.pt"
 
 @st.cache_resource(show_spinner=False)
