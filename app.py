@@ -465,7 +465,7 @@ with st.sidebar:
     """, unsafe_allow_html=True)
 
     st.markdown("---")
-    generate_btn = st.button("🎲  GENERATE", use_container_width=True)
+    generate_btn = st.button("🎲  GENERATE", width=300)
 
 # ── Main layout ──
 col_main, col_final = st.columns([2, 1])
@@ -499,7 +499,7 @@ if generate_btn:
             cols = st.columns(len(row_snaps))
             for col, (t_val, img) in zip(cols, row_snaps):
                 with col:
-                    st.image(img, use_container_width=True)
+                    st.image(img, width=300)
                     noise_pct = round(t_val / TIMESTEPS * 100)
                     st.markdown(
                         f'<div class="steps-label">T={t_val}<br>{noise_pct}% noise</div>',
@@ -507,7 +507,7 @@ if generate_btn:
                     )
 
     with final_placeholder.container():
-        st.image(final_img, use_container_width=True)
+        st.image(final_img, width=300)
         st.markdown('<div class="steps-label">GENERATED FACE</div>', unsafe_allow_html=True)
 
     buf = io.BytesIO()
@@ -517,7 +517,7 @@ if generate_btn:
         data=buf.getvalue(),
         file_name=f"ddpm_face_seed{seed_val or 'rand'}.png",
         mime="image/png",
-        use_container_width=True
+        width=300
     )
 
     st.markdown(f"""
